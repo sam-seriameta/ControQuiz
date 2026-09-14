@@ -3,7 +3,7 @@
 Un file HTML solo. Regia su un monitor, schermo proiettato sull'altro.
 Niente account, niente server, niente rete: doppio clic e funziona.
 
-**[Apri l'app](https://UTENTE.github.io/REPO/)** · **[Istruzioni](ISTRUZIONI.md)** · **[Instructions in English](INSTRUCTIONS.md)**
+**[Apri l'app](https://sam-seriameta.github.io/ControQuiz/)** · **[Istruzioni](ISTRUZIONI.md)** · **[Instructions in English](INSTRUCTIONS.md)**
 
 ---
 
