@@ -3,8 +3,9 @@
 const VERSIONE = "__VERSIONE__";
 const REPO = "__REPO__";
 const LOGO_SEGNAPOSTO = "__LOGO_SEGNAPOSTO__";
+const LOGO_SAM = "__LOGO_SAM__";
 
-const COLORI = ["#3E7CB1","#4C9A6A","#C2622D","#B0483F","#6B5CA5","#2F8E8A","#A8863B","#7A8194"];
+const COLORI = ["#F5169B","#0FB5DC","#F5A300","#7B2FBE","#2FA36B","#E01B3C","#2F7BD1","#FF7A1A"];
 const TEMPLATE = {timer:"Solo timer", parole:"Timer e parole", risposte:"Parole e risposte"};
 
 const FUNZIONI = [
@@ -30,13 +31,13 @@ function configBase(){
     lingua: LINGUA,
     salvatoIl: 0,
     tema: {
-      sfondo:"#F4F2EE", testo:"#2B2F38", giallo:"#E8A200", rosso:"#D93025",
-      onde:true, ondeColori:["#8A90A2","#6E7488","#6E7488","#A8AEBD"],
+      sfondo:"#FFF6FA", testo:"#1B1033", giallo:"#F59E00", rosso:"#E01B3C",
+      onde:true, ondeColori:["#29D3F0","#F5169B","#F5169B","#FFD447"],
       altezzaOnde:170, granelli:true, barra:true,
       font:{nome:"", dati:"", scala:100, peso:400, corsivo:false, maiuscolo:false, spaziatura:0},
     },
-    tappo:  {logo:LOGO_SEGNAPOSTO, mostraLogo:true, scalaLogo:100, testo:"", scalaTesto:100},
-    angolo: {logo:LOGO_SEGNAPOSTO, mostra:true, scala:100, posizione:"alto-destra"},
+    tappo:  {logo:LOGO_SAM, mostraLogo:true, scalaLogo:145, testo:"", scalaTesto:100},
+    angolo: {logo:LOGO_SAM, mostra:false, scala:100, posizione:"alto-destra"},
     vista:  {timerPosizione:"basso-destra", timerScala:100, sogliaGialla:10, sogliaRossa:5},
     suono:  {tipo:"campana", volume:60},
     finale: {schermo:"tappo"},
