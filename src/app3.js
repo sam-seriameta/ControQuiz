@@ -178,7 +178,10 @@ function disegnaTema(){
       const bt = el("div", {className:"bottoni"});
       bt.append(el("button", {textContent:tr("Carica il logo…"), onclick: () =>
         chiediFile("image/*", dati => { cfg.tappo.logo = dati; cfg.tappo.mostraLogo = true; aggiorna(); disegnaTema(); })}));
-      bt.append(el("button", {className:"quieto", textContent:tr("Rimetti il segnaposto"), onclick: () => {
+      bt.append(el("button", {className:"quieto", textContent:tr("Rimetti il logo SAM"), onclick: () => {
+        cfg.tappo.logo = LOGO_SAM; aggiorna(); disegnaTema();
+      }}));
+      bt.append(el("button", {className:"quieto", textContent:tr("Togli il logo"), onclick: () => {
         cfg.tappo.logo = LOGO_SEGNAPOSTO; aggiorna(); disegnaTema();
       }}));
       p.push(bt);
@@ -602,7 +605,7 @@ function applicaConfig(nuovo){
 
 function aggiornaLink(){
   const a = $("#linkIstruzioni");
-  if(a) a.href = REPO + "/blob/main/" + (linguaAttiva() === "en" ? "INSTRUCTIONS.md" : "ISTRUZIONI.md");
+  if(a) a.href = REPO + "/blob/HEAD/" + (linguaAttiva() === "en" ? "INSTRUCTIONS.md" : "ISTRUZIONI.md");
 }
 
 $("#selLingua").onchange = e => {
