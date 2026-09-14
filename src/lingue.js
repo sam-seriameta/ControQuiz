@@ -97,7 +97,8 @@ const LINGUE = {
     "Tutto maiuscolo":"All caps",
     "TAPPO":"HOLDING CARD",
     "Carica il logo…":"Load the logo…",
-    "Rimetti il segnaposto":"Restore the placeholder",
+    "Rimetti il logo SAM":"Restore the SAM logo",
+    "Togli il logo":"Remove the logo",
     "Mostra il logo sul tappo":"Show the logo on the holding card",
     "Dimensione del logo":"Logo size",
     "Scritta sul tappo":"Caption on the holding card",
@@ -227,6 +228,6 @@ function traduciPagina(){
   document.querySelectorAll("[data-t]").forEach(e => { e.textContent = tr(e.dataset.t); });
   document.querySelectorAll("[data-tp]").forEach(e => { e.placeholder = tr(e.dataset.tp); });
   document.title = linguaAttiva() === "en"
-    ? "Control — timer and words for live games"
-    : "Regia — timer e parole per giochi dal vivo";
+    ? "ControQuiz — timer and words for live games"
+    : "ControQuiz — timer e parole per giochi dal vivo";
 }
