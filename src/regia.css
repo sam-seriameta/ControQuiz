@@ -1,0 +1,104 @@
+:root{
+  --fondo:#14121F;--pannello:#1E1B2C;--riga:#2E2A40;
+  --testo:#EDE9F2;--tenue:#9A93AC;--acc:#E8833A;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{background-color:var(--riga);color:var(--testo);
+  font:15px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif;
+  display:grid;grid-template-columns:minmax(380px,3fr) 5fr;gap:1px}
+.colonna{background:var(--fondo);overflow-y:auto;padding:18px 20px 80px}
+h1{font:700 15px/1 system-ui;letter-spacing:.14em;margin:0 0 16px;color:var(--tenue)}
+h2{font:700 13px/1 system-ui;letter-spacing:.1em;color:var(--tenue);margin:24px 0 10px}
+h2:first-of-type{margin-top:0}
+.scheda{background:var(--pannello);border-radius:10px;padding:14px;margin-bottom:10px}
+label{display:block;font-size:12px;color:var(--tenue);margin-bottom:4px}
+input[type=text],input[type=number],textarea,select{width:100%;background:#120F1C;color:var(--testo);
+  border:1px solid var(--riga);border-radius:7px;padding:8px 10px;font:inherit}
+textarea{min-height:120px;resize:vertical;font-size:14px;line-height:1.6}
+input:focus,textarea:focus,select:focus,button:focus-visible{outline:2px solid var(--acc);outline-offset:1px}
+input[type=range]{width:100%;accent-color:var(--acc)}
+input[type=checkbox]{width:auto;height:16px;accent-color:var(--acc);cursor:pointer}
+input[type=color]{width:38px;height:38px;flex:none;padding:2px;border:1px solid var(--riga);
+  border-radius:9px;background:#120F1C;cursor:pointer}
+.duo{display:grid;grid-template-columns:1fr 130px;gap:10px;margin-bottom:10px}
+.duo3{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+button{background:var(--riga);color:var(--testo);border:0;border-radius:7px;
+  padding:9px 14px;font:600 14px/1 system-ui;cursor:pointer}
+button:hover{background:#3C3654}
+button.forte{background:var(--acc);color:#1B0C02}
+button.forte:hover{background:#F59A55}
+button.quieto{background:transparent;color:var(--tenue);padding:6px 8px}
+button.quieto:hover{color:var(--testo);background:var(--riga)}
+button[disabled]{opacity:.35;cursor:not-allowed}
+.bottoni{display:flex;flex-wrap:wrap;gap:8px}
+.nota{font-size:13px;color:var(--tenue);margin:8px 0 0}
+
+.pieghevole{background:var(--pannello);border-radius:10px;margin-bottom:8px;overflow:hidden}
+.testata{display:flex;align-items:center;gap:8px;padding:10px 12px;cursor:pointer;user-select:none}
+.testata:hover{background:#262138}
+.freccia{color:var(--tenue);font-size:10px;width:10px;flex:none;transition:transform .15s}
+.pieghevole.aperto .freccia{transform:rotate(90deg)}
+.titolo-b{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:52%}
+.sommario{font-size:13px;color:var(--tenue);margin-left:auto;white-space:nowrap;
+  overflow:hidden;text-overflow:ellipsis;padding-left:8px}
+.testata button{padding:4px 9px;font-size:13px;line-height:1;flex:none}
+.corpo{padding:2px 12px 12px}
+.gruppo{border-left:3px solid var(--riga);padding-left:10px;margin:0 0 10px}
+.gruppo .pieghevole{background:#231E35}
+
+.riga-squadra{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.riga-squadra input[type=text]{flex:1}
+.tavolozza{display:flex;gap:6px;flex-wrap:wrap;margin:2px 0 0 46px}
+.tavolozza button{width:20px;height:20px;padding:0;border-radius:50%;border:2px solid transparent}
+.tavolozza button:hover{border-color:var(--testo)}
+.pallino{width:12px;height:12px;border-radius:50%;flex:none}
+.spunta{display:flex;align-items:center;gap:9px;margin:0 0 10px;font-size:14px;cursor:pointer}
+.cursore{display:grid;grid-template-columns:1fr 54px;gap:10px;align-items:center;margin-bottom:10px}
+.cursore output{font-size:13px;color:var(--tenue);text-align:right;font-variant-numeric:tabular-nums}
+
+.live{position:sticky;top:0;background:var(--fondo);padding-bottom:14px;z-index:2}
+.stato{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;
+  border-left:4px solid var(--riga);padding-left:12px;margin-bottom:12px}
+.stato .chi{font:700 20px/1.2 system-ui}
+.stato .tempo{font:700 34px/1 ui-monospace,Menlo,monospace;font-variant-numeric:tabular-nums}
+.stato .tempo.scarso{color:#FFB406}
+.stato .tempo.finito{color:#FF5A4A}
+.stato .nota{font-size:13px;color:var(--tenue);margin:0}
+.correggi{display:flex;align-items:center;gap:6px;margin-bottom:12px;flex-wrap:wrap}
+.correggi input{width:86px;text-align:center}
+.correggi span{font-size:13px;color:var(--tenue)}
+
+.corrente{background:var(--pannello);border-radius:10px;padding:16px 18px;margin-bottom:12px}
+.corrente .ora{font:700 30px/1.15 system-ui;word-break:break-word;min-height:34px}
+.corrente .poi{margin-top:8px;font-size:14px;color:var(--tenue);word-break:break-word}
+ol.voci{list-style:none;margin:0;padding:0;max-height:240px;overflow-y:auto}
+ol.voci li{display:flex;gap:10px;padding:6px 8px;border-radius:6px;cursor:pointer;font-size:14px}
+ol.voci li:hover{background:var(--pannello)}
+ol.voci li .n{color:var(--tenue);font-variant-numeric:tabular-nums;min-width:26px}
+ol.voci li.viva{color:#fff}
+ol.voci li.viva .n{color:#fff}
+ol.voci li.passata{color:var(--tenue)}
+ol.voci li .ris{color:var(--tenue);font-style:italic}
+
+table.tasti{width:100%;border-collapse:collapse;font-size:14px}
+table.tasti td{padding:7px 0;border-bottom:1px solid var(--riga)}
+table.tasti tr:last-child td{border-bottom:0}
+kbd{display:inline-block;min-width:44px;text-align:center;background:#120F1C;
+  border:1px solid var(--riga);border-bottom-width:2px;border-radius:5px;
+  padding:4px 8px;font:600 13px/1 ui-monospace,Menlo,monospace}
+kbd.ascolto{border-color:var(--acc);color:var(--acc)}
+
+.avviso{background:#3A1A10;border:1px solid #6A3520;color:#FFD7BC;
+  border-radius:8px;padding:10px 12px;font-size:13px;margin-bottom:12px}
+.avviso button{margin-top:8px}
+.anteprima{position:relative;width:100%;aspect-ratio:16/9;background:#000;
+  border-radius:10px;overflow:hidden;margin-bottom:12px}
+.versione{font-size:12px;color:var(--tenue);margin-top:18px}
+@media (max-width:900px){body{grid-template-columns:1fr}}
+.testaColonna{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.testaColonna h1{margin:0;flex:1}
+.testaColonna select{width:auto;padding:5px 8px;font-size:13px}
+
+.versione a{color:var(--acc);text-decoration:none}
+.versione a:hover{text-decoration:underline}

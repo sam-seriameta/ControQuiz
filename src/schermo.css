@@ -1,0 +1,116 @@
+@font-face{font-family:TitoloBase;src:url("__FONT__") format("woff");font-weight:400;font-style:normal;font-display:block}
+
+.schermo{
+  position:absolute;top:50%;left:50%;width:1280px;height:720px;
+  transform:translate(-50%,-50%) scale(var(--k,1));transform-origin:center;
+  overflow:hidden;
+  background:var(--sfondo,#F4F2EE);
+  color:var(--testo,#2B2F38);
+  font-family:var(--carattere,TitoloBase),TitoloBase,system-ui,sans-serif;
+  font-weight:var(--peso,400);
+  font-style:var(--corsivo,normal);
+  letter-spacing:var(--spaziatura,0em);
+  --squadra:#7A8194;
+  --g1:#8A90A2;--g2:#6E7488;--g3:#6E7488;--g4:#A8AEBD;
+  --maiuscolo:none;
+}
+
+/* ---------- onde ---------- */
+.onde{position:absolute;left:0;width:100%;height:var(--altezzaOnde,170px);pointer-events:none}
+.onde-su{top:0}
+.onde-giu{bottom:0;transform:scaleY(-1)}
+.onde .filo{fill:none;stroke:var(--sfondo,#F4F2EE);stroke-width:4;opacity:.9}
+.schermo.senzaOnde .onde{display:none}
+.schermo[data-fase=gioco] .onde-giu{height:calc(var(--altezzaOnde,170px) * .65)}
+.stopA{stop-color:var(--g1)} .stopB{stop-color:var(--g2)}
+.stopC{stop-color:var(--g3)} .stopD{stop-color:var(--g4)}
+
+/* ---------- granelli ---------- */
+.granelli{position:absolute;width:300px;height:300px;pointer-events:none;
+  background-image:radial-gradient(currentColor 2.4px,transparent 2.6px);
+  background-size:26px 26px;opacity:.4}
+.granelli.gsu{top:150px;left:-40px;color:var(--g1);
+  -webkit-mask-image:radial-gradient(60% 60% at 70% 70%,#000,transparent);
+  mask-image:radial-gradient(60% 60% at 70% 70%,#000,transparent)}
+.granelli.ggiu{bottom:150px;right:-40px;color:var(--g4);
+  -webkit-mask-image:radial-gradient(60% 60% at 30% 30%,#000,transparent);
+  mask-image:radial-gradient(60% 60% at 30% 30%,#000,transparent)}
+.schermo.senzaGranelli .granelli{display:none}
+
+/* ---------- quadri ---------- */
+.quadro{position:absolute;inset:0;display:none}
+.schermo[data-fase=tappo]  .q-tappo{display:flex}
+.schermo[data-fase=finale] .q-tappo{display:flex}
+.schermo[data-fase=pronto] .q-pronto{display:flex}
+.schermo[data-fase=gioco]  .q-gioco{display:flex}
+
+/* ---------- tappo ---------- */
+.q-tappo{flex-direction:column;align-items:center;justify-content:center;padding:120px 60px;gap:0}
+.marchio-grande{width:calc(420px * var(--scalaLogo,1));height:auto;max-height:64%;object-fit:contain;
+  filter:drop-shadow(0 10px 26px rgba(0,0,0,.14))}
+.marchio-grande[hidden]{display:none}
+.tappo-testo{margin:26px 0 0;font-size:calc(56px * var(--scalaTappoTesto,1));
+  line-height:1.05;text-align:center;max-width:1020px;text-transform:var(--maiuscolo,none)}
+.tappo-testo:empty{display:none}
+
+/* ---------- logo d'angolo ---------- */
+.marchio-angolo{position:absolute;width:calc(116px * var(--scalaAngolo,1));height:auto}
+.schermo[data-angolo="alto-destra"]  .marchio-angolo{right:62px;top:84px}
+.schermo[data-angolo="alto-sinistra"] .marchio-angolo{left:62px;top:84px}
+.schermo[data-angolo="basso-destra"]  .marchio-angolo{right:62px;bottom:calc(var(--altezzaOnde,170px) * .65 + 22px)}
+.schermo[data-angolo="basso-sinistra"] .marchio-angolo{left:62px;bottom:calc(var(--altezzaOnde,170px) * .65 + 116px)}
+.schermo.senzaAngolo .marchio-angolo{display:none}
+
+/* ---------- targa squadra ---------- */
+.targa{position:absolute;left:62px;top:60px;display:flex;align-items:center}
+.schermo[data-angolo="alto-sinistra"] .targa{left:auto;right:62px}
+.targa b{background:var(--squadra);color:var(--sfondo,#F4F2EE);font-weight:400;
+  font-size:34px;line-height:1;padding:13px 26px 11px;border-radius:999px;
+  text-transform:var(--maiuscolo,none)}
+.targa b:empty{display:none}
+
+/* ---------- pronto / solo timer ---------- */
+.q-pronto{flex-direction:column;align-items:center;justify-content:center;padding:150px 60px}
+.orologio-grande{font-size:calc(276px * var(--scalaTimer,1));line-height:.86;
+  font-variant-numeric:tabular-nums;color:var(--testo,#2B2F38)}
+
+/* ---------- gioco ---------- */
+.parola{position:absolute;left:90px;right:90px;top:202px;height:268px;
+  display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.parola span{display:block;max-width:100%;line-height:1.04;
+  overflow-wrap:break-word;hyphens:none;text-transform:var(--maiuscolo,none)}
+.parola.risposta span{color:var(--squadra)}
+.parola.vuota span{opacity:.45}
+
+.chip-tempo{position:absolute;font-size:calc(104px * var(--scalaTimer,1));line-height:1;
+  font-variant-numeric:tabular-nums;color:var(--testo,#2B2F38)}
+.schermo[data-timer="basso-destra"]   .chip-tempo{right:66px;bottom:122px}
+.schermo[data-timer="basso-sinistra"] .chip-tempo{left:66px;bottom:122px}
+.schermo[data-timer="alto-destra"]    .chip-tempo{right:66px;top:70px}
+.schermo[data-timer="centro-basso"]   .chip-tempo{left:0;right:0;bottom:116px;text-align:center}
+
+.barra{position:absolute;left:0;right:0;bottom:0;height:12px;
+  background:color-mix(in srgb, var(--testo,#2B2F38) 14%, transparent);display:none}
+.schermo[data-fase=gioco] .barra,.schermo[data-fase=pronto] .barra{display:block}
+.barra i{display:block;height:100%;width:100%;background:var(--squadra)}
+.schermo.senzaBarra .barra{display:none}
+
+/* ---------- soglie ---------- */
+.schermo.avviso  .orologio-grande,.schermo.avviso  .chip-tempo{color:var(--giallo,#FFB406)}
+.schermo.allarme .orologio-grande,.schermo.allarme .chip-tempo{color:var(--rosso,#E02B20)}
+.schermo.allarme .barra i{background:var(--rosso,#E02B20)}
+
+@media (prefers-reduced-motion:no-preference){
+  .schermo.finito .orologio-grande,.schermo.finito .chip-tempo{animation:batti .8s steps(2,end) infinite}
+}
+@keyframes batti{50%{opacity:.2}}
+
+/* ---------- firma dei realizzatori, sempre presente ---------- */
+.credito{position:absolute;left:62px;display:flex;align-items:center;gap:12px;
+  bottom:calc(var(--altezzaOnde,170px) + 18px);pointer-events:none;opacity:.72}
+.schermo[data-fase=gioco] .credito{bottom:calc(var(--altezzaOnde,170px) * .65 + 18px)}
+.schermo.senzaOnde .credito{bottom:34px}
+.credito img{width:100px;height:auto;display:block}
+.credito span{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-weight:600;font-size:21px;letter-spacing:.01em;color:var(--testo,#2B2F38);
+  text-transform:none;font-style:normal}

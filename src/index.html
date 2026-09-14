@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Regia — timer e parole per giochi dal vivo</title>
+<meta name="description" content="Timer e schermate per giochi a squadre dal vivo: regia su un monitor, proiezione sull'altro. Funziona offline, in un file solo.">
+<style id="stileRegia">__CSS_REGIA__</style>
+<style id="stileSchermo">__CSS_SCHERMO__</style>
+</head>
+<body>
+
+<div class="colonna" id="colonnaSinistra">
+  <div class="testaColonna">
+    <h1 data-t="Preparazione">Preparazione</h1>
+    <select id="selLingua" title="Lingua / Language">
+      <option value="it">Italiano</option>
+      <option value="en">English</option>
+    </select>
+  </div>
+
+  <div id="avvisoRecupero" class="avviso" hidden></div>
+  <div id="avvisoPopup" class="avviso" hidden></div>
+
+  <h2 data-t="Schermo esterno">Schermo esterno</h2>
+  <div class="scheda">
+    <div class="bottoni">
+      <button class="forte" id="btnApri" data-t="Apri schermo esterno">Apri schermo esterno</button>
+      <button id="btnChiudi" data-t="Chiudi">Chiudi</button>
+    </div>
+    <p class="nota" data-t="Trascina la finestra sul secondo monitor, poi premi F lì dentro per il pieno schermo.">Trascina la finestra sul secondo monitor, poi premi F lì dentro per il pieno schermo.</p>
+  </div>
+
+  <h2 data-t="Aspetto">Aspetto</h2>
+  <div id="temaBlocco"></div>
+
+  <h2 data-t="Squadre">Squadre</h2>
+  <div id="rubricaBlocco"></div>
+
+  <h2 data-t="Giochi">Giochi</h2>
+  <div id="giochi"></div>
+  <div class="bottoni"><button id="btnNuovoGioco" data-t="Aggiungi gioco">Aggiungi gioco</button></div>
+
+  <h2 data-t="Tasti">Tasti</h2>
+  <div id="tastiBlocco"></div>
+
+  <h2 data-t="Il tuo file">Il tuo file</h2>
+  <div class="scheda">
+    <div class="bottoni">
+      <button class="forte" id="btnSalva" data-t="Salva">Salva</button>
+      <button id="btnScaricaCopia" data-t="Scarica una copia">Scarica una copia</button>
+      <button id="btnImporta" data-t="Riprendi da un file">Riprendi da un file</button>
+    </div>
+    <p class="nota" id="notaSalva"></p>
+    <p class="versione">
+      <a id="linkIstruzioni" href="__REPO__" target="_blank" rel="noopener" data-t="Istruzioni passo passo">Istruzioni passo passo</a>
+      · <span data-t="Versione">Versione</span> __VERSIONE__
+    </p>
+  </div>
+</div>
+
+<div class="colonna" id="colonnaDestra">
+  <div class="live">
+    <h1 data-t="Regia">Regia</h1>
+    <div class="stato" id="stato">
+      <span class="chi" id="statoChi">Nessun round attivo</span>
+      <span class="tempo" id="statoTempo">--:--</span>
+      <span class="nota" id="statoNota">Avvia un round dalla colonna a sinistra</span>
+    </div>
+    <div class="bottoni" style="margin-bottom:12px">
+      <button class="forte" id="cAvvia" disabled>Avvia</button>
+      <button id="cReset" disabled>Azzera</button>
+      <button id="cIndietro" disabled>Indietro</button>
+      <button id="cAvanti" disabled>Avanti</button>
+      <button id="cInizio" disabled>Inizio</button>
+      <button id="cTappo" disabled>Tappo</button>
+      <button id="cFine" disabled>Chiudi round</button>
+    </div>
+    <div class="correggi">
+      <span data-t="Correggi il tempo">Correggi il tempo</span>
+      <button id="cMeno" disabled>−10</button>
+      <button id="cMeno5" disabled>−5</button>
+      <button id="cPiu5" disabled>+5</button>
+      <button id="cPiu" disabled>+10</button>
+      <input type="text" id="cEsatto" placeholder="1:30" disabled>
+      <button id="cImponi" data-t="Imposta" disabled>Imposta</button>
+    </div>
+  </div>
+
+  <div class="corrente">
+    <div class="ora" id="ora">—</div>
+    <div class="poi" id="poi"></div>
+  </div>
+
+  <div class="anteprima" id="anteprima"></div>
+
+  <h2 data-t="Scaletta">Scaletta</h2>
+  <ol class="voci" id="voci"></ol>
+</div>
+
+<script type="application/json" id="configurazione">__CONFIG__</script>
+<script>__JS__</script>
+</body>
+</html>
